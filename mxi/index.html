@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m系-M系浏览器官网与使用指南</title>
+    <meta name="description" content="m系浏览器是一款专注于安全、极简与高效的移动浏览器。本站提供m系最新版本下载、核心功能详解、使用教程与常见问题解答，帮助用户快速上手并安全浏览网页。">
+    <meta name="keywords" content="m系,m系浏览器,浏览器下载,极简浏览器,隐私保护,安全浏览,移动浏览器">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f7fb;
+            color: #1a2639;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 页眉 */
+        .site-header {
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -1px;
+        }
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        .logo-text span {
+            color: #2563eb;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 36px;
+        }
+        .main-nav a {
+            font-weight: 500;
+            color: #334155;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .main-nav a:hover {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .btn-download {
+            background: #2563eb;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-download:hover {
+            background: #1d4ed8;
+        }
+
+        /* 汉堡菜单 */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #1e293b;
+        }
+
+        /* 首屏 Hero */
+        .hero {
+            background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
+            padding: 80px 0 60px;
+        }
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .hero-copy {
+            flex: 1;
+        }
+        .hero-copy h1 {
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+        .hero-copy h1 span {
+            color: #2563eb;
+        }
+        .hero-copy p {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 32px;
+            max-width: 560px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #2563eb;
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #ffffff;
+            color: #1e293b;
+            padding: 14px 36px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1px solid #cbd5e1;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-secondary:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .hero-browser-card {
+            width: 340px;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12);
+            padding: 24px;
+        }
+        .browser-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .browser-dot:nth-child(1) { background: #f87171; }
+        .browser-dot:nth-child(2) { background: #fbbf24; }
+        .browser-dot:nth-child(3) { background: #34d399; }
+        .browser-address {
+            flex: 1;
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 13px;
+            color: #64748b;
+            margin-left: 8px;
+        }
+        .browser-content {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 16px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .browser-line {
+            height: 10px;
+            border-radius: 6px;
+            background: #e2e8f0;
+        }
+        .browser-line.short { width: 60%; }
+        .browser-line.medium { width: 80%; }
+        .browser-line.long { width: 100%; background: #dbeafe; }
+        .browser-line.blue { background: #bfdbfe; height: 30px; border-radius: 8px; }
+
+        /* 功能亮点 */
+        .features {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+        .section-sub {
+            text-align: center;
+            color: #64748b;
+            font-size: 16px;
+            margin-bottom: 50px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .feature-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 32px 24px;
+            transition: 0.25s;
+            border: 1px solid #eef2f7;
+        }
+        .feature-card:hover {
+            background: #fff;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            transform: translateY(-4px);
+        }
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+        .feature-card p {
+            color: #475569;
+            font-size: 15px;
+        }
+
+        /* 版本下载区 */
+        .download-section {
+            padding: 80px 0;
+            background: #f5f7fb;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .download-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e8edf3;
+            transition: 0.2s;
+        }
+        .download-card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+        .download-version {
+            font-size: 28px;
+            font-weight: 800;
+            color: #2563eb;
+            margin-bottom: 6px;
+        }
+        .download-platform {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        .download-desc {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 24px;
+            min-height: 40px;
+        }
+        .btn-download-card {
+            background: #1e293b;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-block;
+            transition: 0.2s;
+        }
+        .btn-download-card:hover {
+            background: #2563eb;
+        }
+
+        /* 使用教程 */
+        .guide-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+        .guide-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .guide-step {
+            text-align: center;
+            padding: 20px;
+        }
+        .step-num {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .guide-step h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+        .guide-step p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* 安全提示 */
+        .security-section {
+            padding: 60px 0;
+            background: #eef2ff;
+        }
+        .security-box {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            border-left: 6px solid #2563eb;
+        }
+        .security-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+        .security-content p {
+            color: #475569;
+            margin-bottom: 10px;
+        }
+        .security-content ul {
+            list-style: disc;
+            padding-left: 20px;
+            color: #475569;
+        }
+        .security-content li {
+            margin: 6px 0;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 80px 0;
+            background: #f5f7fb;
+        }
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+        .faq-question {
+            font-weight: 600;
+            font-size: 17px;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        .faq-answer {
+            color: #475569;
+            font-size: 15px;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 50px 0 30px;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        .footer-brand .logo-text {
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .footer-brand p {
+            font-size: 14px;
+        }
+        .footer-col h4 {
+            color: #e2e8f0;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col a {
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .footer-col a:hover {
+            color: #fff;
+        }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            padding-top: 24px;
+            font-size: 14px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .hero-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-copy p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .download-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .guide-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .security-box {
+                flex-direction: column;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+                padding: 20px;
+            }
+            .main-nav.open {
+                display: block;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .header-actions .btn-download {
+                display: none;
+            }
+            .hero-copy h1 {
+                font-size: 32px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+            .guide-steps {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hero-visual {
+                margin-top: 20px;
+            }
+            .hero-browser-card {
+                width: 280px;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+    <!-- 页眉 -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo-area">
+                <div class="logo-icon">m</div>
+                <div class="logo-text">m系<span>浏览器</span></div>
+            </div>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="#features">核心功能</a></li>
+                    <li><a href="#download">版本下载</a></li>
+                    <li><a href="#guide">使用教程</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-download" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">立即下载</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="菜单">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 首屏 -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-copy">
+                <h1>极简 · 安全 · 快速的 <span>m系浏览器</span></h1>
+                <p>m系浏览器是一款专为现代移动端设计的轻量级浏览器，没有繁杂的广告推送，没有冗余的界面干扰。它专注于提供纯粹的浏览体验，同时内置强大的隐私保护机制，让你的每一次访问都安心可靠。</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn-primary">📥 下载m系</a>
+                    <a href="#guide" class="btn-secondary">📖 新手指南</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-browser-card">
+                    <div class="browser-top">
+                        <span class="browser-dot"></span>
+                        <span class="browser-dot"></span>
+                        <span class="browser-dot"></span>
+                        <span class="browser-address">m-browser.com</span>
+                    </div>
+                    <div class="browser-content">
+                        <div class="browser-line blue"></div>
+                        <div class="browser-line long"></div>
+                        <div class="browser-line medium"></div>
+                        <div class="browser-line short"></div>
+                        <div class="browser-line long"></div>
+                        <div class="browser-line medium"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能亮点 -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">为什么选择 m系？</h2>
+            <p class="section-sub">为追求效率与隐私的你设计</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>极速引擎</h3>
+                    <p>采用先进的页面加载优化机制，减少不必要的资源消耗，网页打开速度显著提升，滑动与切换操作流畅自如。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>隐私防护</h3>
+                    <p>内置智能跟踪拦截，自动屏蔽广告追踪器与恶意脚本。无痕模式下不记录任何浏览历史，保护你的数字足迹。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>极简界面</h3>
+                    <p>没有冗杂的功能按钮，没有干扰视觉的弹窗。所有常用操作都触手可及，让注意力集中在内容本身。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3>夜间模式</h3>
+                    <p>一键切换深色主题，在夜间或低光环境下浏览更舒适，减少屏幕亮光对眼睛的刺激。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔖</div>
+                    <h3>智能收藏</h3>
+                    <p>支持跨设备云同步收藏夹与阅读列表，电脑手机无缝衔接，随时继续你的阅读进度。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📶</div>
+                    <h3>省流量模式</h3>
+                    <p>开启后自动压缩图片与视频画质，有效减少移动数据消耗，在弱网环境下也能快速加载页面。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 版本下载 -->
+    <section class="download-section" id="download">
+        <div class="container">
+            <h2 class="section-title">下载 m系浏览器</h2>
+            <p class="section-sub">选择适合你的平台版本，即刻开始纯净浏览</p>
+            <div class="download-grid">
+                <div class="download-card">
+                    <div class="download-version">v3.2.1</div>
+                    <div class="download-platform">Android 版</div>
+                    <p class="download-desc">支持 Android 10 及以上系统，安装包体积小，启动迅速。</p>
+                    <a href="#" class="btn-download-card">下载 APK</a>
+                </div>
+                <div class="download-card">
+                    <div class="download-version">v3.2.1</div>
+                    <div class="download-platform">iOS 版</div>
+                    <p class="download-desc">适配 iPhone / iPad，完美融合系统原生体验，支持面容解锁隐私空间。</p>
+                    <a href="#" class="btn-download-card">前往 App Store</a>
+                </div>
+                <div class="download-card">
+                    <div class="download-version">v2.8.0</div>
+                    <div class="download-platform">Windows 桌面版</div>
+                    <p class="download-desc">适用于 Win10/11，支持鼠标手势与多标签页管理，办公浏览更高效。</p>
+                    <a href="#" class="btn-download-card">下载安装包</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用教程 -->
+    <section class="guide-section" id="guide">
+        <div class="container">
+            <h2 class="section-title">快速上手指南</h2>
+            <p class="section-sub">从安装到熟练使用，只需四步</p>
+            <div class="guide-steps">
+                <div class="guide-step">
+                    <div class="step-num">1</div>
+                    <h3>下载安装</h3>
+                    <p>从上方选择对应平台的版本，下载后按照系统提示完成安装。整个安装过程仅需不到一分钟。</p>
+                </div>
+                <div class="guide-step">
+                    <div class="step-num">2</div>
+                    <h3>导入数据</h3>
+                    <p>首次启动时，可选择从旧浏览器导入书签、密码与历史记录，无缝切换不丢失任何重要数据。</p>
+                </div>
+                <div class="guide-step">
+                    <div class="step-num">3</div>
+                    <h3>个性化设置</h3>
+                    <p>在设置中调整浏览器的主题、字体大小、默认搜索引擎以及隐私保护级别，打造专属浏览环境。</p>
+                </div>
+                <div class="guide-step">
+                    <div class="step-num">4</div>
+                    <h3>开始浏览</h3>
+                    <p>现在你已经准备好了。在地址栏输入网址，或者使用内置的智能搜索，享受清爽快速的网络之旅。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 安全提示 -->
+    <section class="security-section">
+        <div class="container">
+            <div class="security-box">
+                <div style="font-size:48px;">🔐</div>
+                <div class="security-content">
+                    <h3>安全浏览须知</h3>
+                    <p>m系浏览器始终将用户的安全放在首位，但我们仍建议你遵循以下基本网络安全准则：</p>
+                    <ul>
+                        <li>避免在公共 WiFi 网络下登录银行账户或输入敏感个人信息。</li>
+                        <li>下载应用时，请认准官方渠道，不要安装来源不明的 APK 文件。</li>
+                        <li>定期清理浏览缓存与 Cookie，减少被追踪的风险。</li>
+                        <li>如遇到页面提示安全证书异常，请停止访问该网站。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">常见问题解答</h2>
+            <p class="section-sub">这里汇总了用户最关心的一些疑问</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Q: m系浏览器是免费的吗？会有内购吗？</div>
+                    <div class="faq-answer">m系浏览器完全免费，无任何内购项目。我们相信优秀的工具应当普惠于所有用户，不通过功能付费来限制使用体验。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: 如何开启无痕浏览模式？</div>
+                    <div class="faq-answer">在浏览器主界面点击右上角的菜单图标（三个点），在弹出的菜单中选择“新建无痕标签页”即可。无痕模式下关闭所有标签页后，相关浏览记录会被自动清除。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: m系浏览器会收集我的个人信息吗？</div>
+                    <div class="faq-answer">我们坚持隐私至上的原则。m系浏览器默认不收集任何个人身份信息，不追踪你的浏览行为。所有数据均保存在本地设备，除非你主动开启云同步功能。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: 安装时提示“未知来源”怎么办？</div>
+                    <div class="faq-answer">这是 Android 系统的安全机制。请在系统设置中允许“安装未知应用”的权限，或前往系统提示的“设置”按钮中为本次安装开启临时允许。安装完成后建议关闭该权限以保障安全。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: 能否在电脑和手机之间同步书签？</div>
+                    <div class="faq-answer">可以。注册一个m系账号并登录，然后在设置中开启“云同步”功能，你的书签、阅读列表和设置偏好会在所有设备间实时同步。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: 如何反馈使用中遇到的问题？</div>
+                    <div class="faq-answer">你可以通过应用内的“帮助与反馈”入口提交问题，或发送邮件至官方支持邮箱。我们通常会在一个工作日内回复。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="logo-text">m系<span style="color:#60a5fa;">浏览器</span></div>
+                    <p>专注于极简、安全与速度的现代浏览器，致力于为全球用户提供纯净的上网体验。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="#features">功能特性</a></li>
+                        <li><a href="#download">版本下载</a></li>
+                        <li><a href="#guide">使用教程</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2025 m系浏览器 · 保留所有权利 · 用心打造每一行代码
+            </div>
+        </div>
+    </footer>
+
+    <!-- 简单交互脚本 -->
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', function () {
+            mainNav.classList.toggle('open');
+        });
+
+        // 点击导航链接后自动收起菜单（移动端体验优化）
+        const navLinks = document.querySelectorAll('.main-nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                mainNav.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+                              </html>
